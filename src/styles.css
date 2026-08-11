@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * CASA DE AROMA — light editorial luxury design system.
- * Ivory / stone / sage / champagne. Serif display + minimal sans.
+ * CASA DE AROMA - luxury palette inspired by the logo.
+ * Warm ivory / brushed gold / deep teal / blackened ink.
  */
 
 @theme inline {
@@ -47,34 +47,35 @@
 }
 
 :root {
-  --radius: 0.125rem;
+  --radius: 0.375rem;
 
-  --ivory: oklch(0.978 0.008 95);
-  --stone-pale: oklch(0.951 0.01 92);
-  --mist: oklch(0.897 0.015 130);
-  --sage: oklch(0.56 0.031 133);
-  --sage-soft: oklch(0.83 0.028 133);
-  --champagne: oklch(0.74 0.055 92);
-  --ink: oklch(0.235 0.006 130);
+  /* Warm ivory + gold + teal palette pulled from the logo */
+  --ivory: oklch(0.975 0.018 88);
+  --stone-pale: oklch(0.946 0.02 85);
+  --mist: oklch(0.93 0.018 190);
+  --sage: oklch(0.36 0.085 209);
+  --sage-soft: oklch(0.84 0.05 191);
+  --champagne: oklch(0.8 0.14 84);
+  --ink: oklch(0.16 0.012 70);
 
   --background: var(--ivory);
   --foreground: var(--ink);
-  --card: oklch(0.99 0.005 95);
+  --card: var(--ivory);
   --card-foreground: var(--ink);
   --popover: var(--ivory);
   --popover-foreground: var(--ink);
-  --primary: var(--ink);
+  --primary: var(--sage);
   --primary-foreground: var(--ivory);
   --secondary: var(--stone-pale);
   --secondary-foreground: var(--ink);
   --muted: var(--stone-pale);
-  --muted-foreground: oklch(0.52 0.012 120);
-  --accent: var(--sage);
-  --accent-foreground: var(--ivory);
+  --muted-foreground: oklch(0.49 0.014 78);
+  --accent: var(--champagne);
+  --accent-foreground: var(--ink);
   --destructive: oklch(0.55 0.16 27);
   --destructive-foreground: var(--ivory);
-  --border: oklch(0.9 0.012 96);
-  --input: oklch(0.9 0.012 96);
+  --border: oklch(0.89 0.018 84);
+  --input: oklch(0.89 0.018 84);
   --ring: var(--sage);
 }
 
@@ -140,30 +141,17 @@
   font-size: 0.6875rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  border: 1px solid color-mix(in oklab, var(--ink) 55%, transparent);
-  color: var(--ink);
+  border: 1.5px solid var(--sage);
+  color: var(--sage);
+  border-radius: 0.375rem;
   overflow: hidden;
   transition:
-    color 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.6s ease;
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: var(--ink);
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  & > * {
-    position: relative;
-    z-index: 1;
-  }
+    color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.5s ease,
+    border-color 0.5s ease;
   &:hover {
+    background: var(--sage);
     color: var(--ivory);
-  }
-  &:hover::before {
-    transform: scaleY(1);
   }
 }
 
@@ -177,12 +165,16 @@
   font-size: 0.6875rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  background: var(--ink);
-  color: var(--ivory);
+  background: var(--champagne);
+  color: var(--ink);
+  border-radius: 0.375rem;
   overflow: hidden;
-  transition: background 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    background 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s ease;
   &:hover {
-    background: var(--sage);
+    background: oklch(from var(--champagne) calc(l - 0.06) c h);
+    box-shadow: 0 10px 30px -8px oklch(from var(--champagne) l c h / 0.5);
   }
 }
 
@@ -206,7 +198,6 @@
   }
 }
 
-/* Scroll reveal */
 @utility reveal {
   opacity: 0;
   transform: translateY(28px);

@@ -17,7 +17,7 @@ export function ProductCard({
     <article className="group relative flex flex-col">
       <div
         className={cn(
-          "relative overflow-hidden bg-stone-pale",
+          "relative overflow-hidden rounded-xl bg-stone-pale",
           tall ? "aspect-[3/4]" : "aspect-square",
         )}
       >

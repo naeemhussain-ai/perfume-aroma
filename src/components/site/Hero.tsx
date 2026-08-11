@@ -1,38 +1,46 @@
 import { useEffect, useState } from "react";
 import { ArrowDown } from "lucide-react";
-import heroBottle from "@/assets/hero-bottle.jpg";
+import heroBg from "@/assets/hero-bottle.jpg";
 
 export function Hero() {
   const [ready, setReady] = useState(false);
-  const [y, setY] = useState(0);
 
   useEffect(() => {
     const t = setTimeout(() => setReady(true), 80);
-    const onScroll = () => setY(window.scrollY);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      clearTimeout(t);
-      window.removeEventListener("scroll", onScroll);
-    };
+    return () => clearTimeout(t);
   }, []);
 
-  const words = ["The", "Art", "of", "Scent."];
+  const lines = [
+    [{ text: "The Art", italic: false, gold: false }],
+    [{ text: "of ", italic: true, gold: true }, { text: "Scent.", italic: false, gold: false }],
+  ];
+  const notes = [
+    ["Top", "Bergamot, neroli, saffron"],
+    ["Heart", "Rose, jasmine, soft spice"],
+    ["Base", "Amber, musk, cedarwood"],
+  ];
 
   return (
-    <section id="top" className="relative overflow-hidden pt-32 sm:pt-40">
-      <div
+    <section
+      id="top"
+      className="relative min-h-screen overflow-hidden pt-[112px] sm:pt-[124px]"
+    >
+      <img
+        src={heroBg}
+        alt=""
         aria-hidden="true"
-        className="drift-slow pointer-events-none absolute -top-32 -left-40 h-[34rem] w-[34rem] rounded-full bg-mist/50 blur-3xl"
+        className="absolute inset-0 h-full w-full object-cover object-center md:object-[center_28%]"
       />
-      <div
-        aria-hidden="true"
-        className="float-slow pointer-events-none absolute top-1/3 right-[42%] hidden h-24 w-24 rounded-full border border-champagne/40 lg:block"
-      />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#072d35]/88 via-[#0b3943]/60 to-[#f4ecdf]/18" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,72,85,0.28),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(207,167,90,0.18),transparent_28%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#072d35]/65 to-transparent" />
+      <div className="absolute -left-16 top-28 h-56 w-56 rounded-full bg-champagne/15 blur-3xl" />
+      <div className="absolute right-0 bottom-24 h-64 w-64 rounded-full bg-sage-soft/15 blur-3xl" />
 
-      <div className="mx-auto grid max-w-[1500px] items-end gap-12 px-6 pb-16 sm:px-10 lg:grid-cols-12 lg:gap-6 lg:pb-24">
-        <div className="lg:col-span-6 lg:pb-10">
+      <div className="relative z-10 mx-auto grid max-w-[1500px] min-h-[calc(100vh-124px)] items-end gap-14 px-6 py-16 sm:px-10 lg:grid-cols-[minmax(0,1.2fr)_24rem] lg:gap-12 lg:py-20">
+        <div className="max-w-3xl self-center">
           <span
-            className="label-xs block text-sage transition-all duration-1000"
+            className="label-xs block text-champagne transition-all duration-1000"
             style={{
               opacity: ready ? 1 : 0,
               transform: ready ? "none" : "translateY(14px)",
@@ -41,83 +49,112 @@ export function Hero() {
             Curated Fragrance Collection
           </span>
 
-          <h1 className="display-hero mt-8 text-[19vw] leading-[0.82] sm:text-[13vw] lg:text-[8.5vw]">
-            {words.map((w, i) => (
-              <span key={w} className="block overflow-hidden">
+          <h1 className="display-hero mt-6 text-[13vw] leading-[0.88] text-ivory sm:text-[9vw] lg:text-[6.5vw]">
+            {lines.map((parts, i) => (
+              <span key={i} className="block overflow-hidden">
                 <span
                   className="block transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
                   style={{
                     transform: ready ? "translateY(0)" : "translateY(105%)",
-                    transitionDelay: `${180 + i * 110}ms`,
-                    fontStyle: i === 2 ? "italic" : undefined,
-                    color: i === 2 ? "var(--sage)" : undefined,
-                    paddingLeft: i === 1 ? "0.12em" : undefined,
+                    transitionDelay: `${180 + i * 150}ms`,
                   }}
                 >
-                  {w}
+                  {parts.map((p, j) => (
+                    <span
+                      key={j}
+                      style={{
+                        fontStyle: p.italic ? "italic" : undefined,
+                        color: p.gold ? "var(--champagne)" : undefined,
+                      }}
+                    >
+                      {p.text}
+                    </span>
+                  ))}
                 </span>
               </span>
             ))}
           </h1>
 
           <div
-            className="mt-10 max-w-md transition-all duration-1000"
+            className="mt-10 transition-all duration-1000"
             style={{
               opacity: ready ? 1 : 0,
               transform: ready ? "none" : "translateY(18px)",
               transitionDelay: "760ms",
             }}
           >
-            <p className="text-base leading-relaxed text-muted-foreground">
-              Discover distinctive fragrances created to become part of your
-              signature.
+            <p className="max-w-md text-base leading-relaxed text-ivory/72 sm:text-lg">
+              Discover distinctive fragrances curated for presence, memory, and
+              the kind of signature people remember long after you leave.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <a href="#shop" className="hairline-btn-solid">
                 <span>Explore Fragrances</span>
               </a>
-              <a href="#discover" className="hairline-btn">
+              <a
+                href="#discover"
+                className="hairline-btn !border-ivory/40 !text-ivory hover:!bg-ivory/15 hover:!text-ivory"
+              >
                 <span>Find Your Scent</span>
               </a>
             </div>
           </div>
-        </div>
-
-        <div className="relative lg:col-span-6">
-          <div
-            className="relative overflow-hidden transition-[clip-path] duration-[1600ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
-            style={{ clipPath: ready ? "inset(0 0 0 0)" : "inset(0 0 100% 0)" }}
-          >
-            <img
-              src={heroBottle}
-              alt="Sculptural glass perfume bottle in warm daylight"
-              width={1104}
-              height={1408}
-              className="aspect-[4/5] w-full object-cover lg:aspect-[3/4]"
-              style={{ transform: `translateY(${Math.min(y * 0.06, 60)}px) scale(1.06)` }}
-            />
-          </div>
 
           <div
-            className="absolute -bottom-6 -left-4 hidden max-w-[15rem] bg-ivory p-6 shadow-[0_30px_70px_-50px_rgba(32,34,31,0.6)] transition-all duration-1000 sm:block lg:-left-14"
+            className="mt-16 inline-flex flex-wrap gap-8 border-t border-ivory/20 pt-8 transition-all duration-1000"
             style={{
               opacity: ready ? 1 : 0,
-              transform: ready ? "none" : "translateY(24px)",
-              transitionDelay: "1100ms",
+              transitionDelay: "1000ms",
             }}
           >
-            <p className="label-xs text-muted-foreground">Maison Since 2016</p>
-            <p className="mt-3 font-display text-2xl leading-snug">
-              200+ fragrances, personally vetted before they earn a place.
+            {[
+              ["8,000+", "Happy Clients"],
+              ["200+", "Fragrances"],
+              ["4.8*", "Avg Rating"],
+            ].map(([v, k]) => (
+              <div key={k}>
+                <p className="font-display text-2xl text-ivory">{v}</p>
+                <p className="label-xs mt-1 text-ivory/50">{k}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div
+          className="hidden self-start lg:block"
+          style={{
+            opacity: ready ? 1 : 0,
+            transform: ready ? "none" : "translateY(22px)",
+            transition: "opacity 1000ms ease, transform 1000ms ease",
+            transitionDelay: "920ms",
+          }}
+        >
+          <div className="rounded-[2rem] border border-ivory/18 bg-ivory/10 p-7 backdrop-blur-md">
+            <p className="label-xs text-champagne">Scent Profile</p>
+            <p className="mt-4 font-display text-3xl leading-tight text-ivory">
+              A warm floral trail with golden citrus lift.
             </p>
+            <div className="mt-8 space-y-4 border-t border-ivory/12 pt-6">
+              {notes.map(([tier, items]) => (
+                <div key={tier} className="grid grid-cols-[3.5rem_1fr] gap-4">
+                  <span className="label-xs text-ivory/45">{tier}</span>
+                  <span className="text-sm leading-relaxed text-ivory/75">
+                    {items}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-[1500px] items-center gap-6 border-t border-border px-6 py-6 sm:px-10">
-        <ArrowDown strokeWidth={1} className="h-4 w-4 animate-bounce text-sage" />
-        <p className="label-xs text-muted-foreground">
-          4.8 average from 8,000+ clients · Delivery in 3–7 days · Worldwide
+      <div className="relative z-10 mx-auto flex max-w-[1500px] flex-wrap items-center gap-4 border-t border-ivory/15 px-6 py-5 sm:px-10">
+        <ArrowDown
+          strokeWidth={1.5}
+          className="h-4 w-4 animate-bounce text-champagne"
+        />
+        <p className="label-xs text-ivory/50">
+          Delivery in 3-7 days | Worldwide shipping | 30-day returns
         </p>
       </div>
     </section>

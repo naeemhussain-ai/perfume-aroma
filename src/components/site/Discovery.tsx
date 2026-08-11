@@ -21,7 +21,7 @@ export function Discovery() {
   const matches = products.filter((p) => p.family === active);
 
   return (
-    <section id="discover" className="px-6 py-24 sm:px-10 lg:py-36">
+    <section id="discover" className="bg-white px-6 py-24 sm:px-10 lg:py-36">
       <div className="mx-auto max-w-[1500px]">
         <Reveal>
           <Label>Fragrance Discovery</Label>
@@ -75,7 +75,7 @@ export function Discovery() {
                 className="group reveal reveal-in"
                 style={{ transitionDelay: `${i * 90}ms` }}
               >
-                <div className="relative aspect-[3/4] overflow-hidden bg-stone-pale">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-stone-pale">
                   <img
                     src={p.image}
                     alt={p.name}

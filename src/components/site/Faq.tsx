@@ -40,7 +40,7 @@ export function Faq() {
   const [open, setOpen] = useState<string | null>("01");
 
   return (
-    <section className="px-6 py-24 sm:px-10 lg:py-36">
+    <section className="bg-white px-6 py-24 sm:px-10 lg:py-36">
       <div className="mx-auto grid max-w-[1400px] gap-14 lg:grid-cols-12">
         <Reveal className="lg:col-span-4">
           <Label>Questions</Label>

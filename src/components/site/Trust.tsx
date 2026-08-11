@@ -19,7 +19,7 @@ const items = [
 
 export function Trust() {
   return (
-    <section className="px-6 py-24 sm:px-10 lg:py-32">
+    <section className="bg-white px-6 py-24 sm:px-10 lg:py-32">
       <div className="mx-auto max-w-[1500px]">
         <Reveal>
           <Label>Why Casa de Aroma</Label>

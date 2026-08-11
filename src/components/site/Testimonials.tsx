@@ -8,21 +8,21 @@ const quotes = [
     body: "Rose d'Arabie is simply breathtaking — the longevity, the sillage. I receive compliments every single time I wear it.",
     name: "Layla A.",
     place: "Dubai, UAE",
-    purchase: "Armani Privé Rose d'Arabie",
+    purchase: "Armani Prive Rose d'Arabie",
   },
   {
     quote: "My forever scent, and nothing compares.",
-    body: "I have tried designer fragrances costing three times as much. Sì is the one I keep returning to — and the gift box is stunning.",
+    body: "I have tried designer fragrances costing three times as much. Si is the one I keep returning to — and the gift box is stunning.",
     name: "Sophie M.",
     place: "Paris, FR",
-    purchase: "Sì Eau de Parfum Gift Box",
+    purchase: "Si Eau de Parfum Gift Box",
   },
   {
     quote: "She was genuinely blown away.",
-    body: "Ordered the Sì Intense duo for my wife's birthday. Fast delivery, beautiful presentation, world-class fragrance.",
+    body: "Ordered the Si Intense duo for my wife's birthday. Fast delivery, beautiful presentation, world-class fragrance.",
     name: "James R.",
     place: "Sydney, AU",
-    purchase: "Sì Eau de Parfum & Intense Duo",
+    purchase: "Si Eau de Parfum & Intense Duo",
   },
 ];
 
@@ -35,10 +35,10 @@ export function Testimonials() {
   }, []);
 
   return (
-    <section className="bg-stone-pale/60 px-6 py-24 sm:px-10 lg:py-40">
+    <section className="bg-sage px-6 py-24 sm:px-10 lg:py-40">
       <div className="mx-auto max-w-[1400px]">
         <Reveal>
-          <Label>Customer Experience</Label>
+          <Label className="!text-ivory/50">Customer Experience</Label>
         </Reveal>
 
         <div className="relative mt-12 min-h-[26rem] sm:min-h-[24rem]">
@@ -53,17 +53,17 @@ export function Testimonials() {
                   : "pointer-events-none translate-y-6 opacity-0",
               )}
             >
-              <p className="font-display text-[10vw] leading-[0.92] sm:text-[6vw] lg:text-[4.6vw]">
-                “{q.quote}”
+              <p className="font-display text-[10vw] leading-[0.92] text-ivory sm:text-[6vw] lg:text-[4.6vw]">
+                &ldquo;{q.quote}&rdquo;
               </p>
-              <div className="mt-10 grid gap-8 border-t border-ink/10 pt-8 sm:grid-cols-3">
-                <p className="text-sm leading-relaxed text-muted-foreground sm:col-span-2">
+              <div className="mt-10 grid gap-8 border-t border-ivory/15 pt-8 sm:grid-cols-3">
+                <p className="text-sm leading-relaxed text-ivory/65 sm:col-span-2">
                   {q.body}
                 </p>
                 <div>
-                  <p className="font-display text-2xl">{q.name}</p>
-                  <p className="label-xs mt-1 text-muted-foreground">{q.place}</p>
-                  <p className="mt-3 text-[11px] text-sage">
+                  <p className="font-display text-2xl text-ivory">{q.name}</p>
+                  <p className="label-xs mt-1 text-ivory/50">{q.place}</p>
+                  <p className="mt-3 text-[11px] text-champagne">
                     Purchased: {q.purchase}
                   </p>
                 </div>
@@ -80,7 +80,7 @@ export function Testimonials() {
               onClick={() => setI(idx)}
               className={cn(
                 "h-px w-16 transition-all duration-500",
-                idx === i ? "bg-ink" : "bg-ink/20 hover:bg-ink/40",
+                idx === i ? "bg-champagne" : "bg-ivory/25 hover:bg-ivory/50",
               )}
             />
           ))}

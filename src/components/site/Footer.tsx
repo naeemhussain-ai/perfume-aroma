@@ -1,3 +1,5 @@
+import logo from "@/assets/logo.png";
+
 const columns = [
   {
     title: "Shop",
@@ -19,15 +21,20 @@ const columns = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border px-6 pt-20 pb-10 sm:px-10">
+    <footer className="bg-[#004855] px-6 pt-20 pb-10 text-white sm:px-10">
       <div className="mx-auto max-w-[1500px]">
         <div className="grid gap-14 lg:grid-cols-12">
+
+          {/* Brand column */}
           <div className="lg:col-span-5">
-            <p className="max-w-sm font-display text-4xl leading-tight">
-              Authentic luxury fragrance,
-              <span className="italic text-sage"> delivered worldwide.</span>
-            </p>
-            <p className="mt-6 text-sm text-muted-foreground">
+            <a href="#top">
+              <img
+                src={logo}
+                alt="Casa de Aroma"
+                className="h-28 w-auto object-contain"
+              />
+            </a>
+            <p className="mt-6 text-sm leading-relaxed text-white/65">
               support@casadearoma.com
               <br />
               Houston, TX
@@ -37,7 +44,7 @@ export function Footer() {
                 <a
                   key={s}
                   href="#top"
-                  className="label-xs link-underline text-muted-foreground hover:text-foreground"
+                  className="label-xs text-white/60 transition-colors hover:text-white"
                 >
                   {s}
                 </a>
@@ -45,16 +52,17 @@ export function Footer() {
             </div>
           </div>
 
+          {/* Link columns */}
           <div className="grid gap-10 sm:grid-cols-4 lg:col-span-7">
             {columns.map((c) => (
               <div key={c.title}>
-                <h3 className="label-xs text-muted-foreground">{c.title}</h3>
+                <h3 className="label-xs text-white/50">{c.title}</h3>
                 <ul className="mt-5 space-y-3">
                   {c.links.map((l) => (
                     <li key={l}>
                       <a
                         href="#top"
-                        className="link-underline text-sm text-foreground/80 hover:text-foreground"
+                        className="text-sm text-white/70 transition-colors hover:text-white"
                       >
                         {l}
                       </a>
@@ -66,19 +74,13 @@ export function Footer() {
           </div>
         </div>
 
-        <p
-          aria-hidden="true"
-          className="mt-20 font-display text-[15vw] leading-[0.8] tracking-tight text-ink/[0.07] select-none"
-        >
-          Casa de Aroma
-        </p>
-
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6">
-          <p className="label-xs text-muted-foreground">
-            © 2026 Casa de Aroma
+        {/* Bottom bar */}
+        <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-white/20 pt-6">
+          <p className="label-xs text-white/50">
+            &copy; 2026 Casa de Aroma
           </p>
-          <p className="label-xs text-muted-foreground">
-            Secure & Encrypted · Free Shipping $50+ · 30-Day Returns
+          <p className="label-xs text-white/50">
+            Secure &amp; Encrypted &middot; Free Shipping $50+ &middot; 30-Day Returns
           </p>
         </div>
       </div>

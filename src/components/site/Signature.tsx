@@ -14,16 +14,7 @@ export function Signature() {
   const hero = products.find((p) => p.id === "rose-darabie") ?? products[0]!;
 
   return (
-    <section className="relative overflow-hidden bg-mist/35 px-6 py-24 sm:px-10 lg:py-40">
-      <div
-        aria-hidden="true"
-        className="float-slow pointer-events-none absolute top-24 left-[12%] h-40 w-40 rounded-full border border-champagne/50"
-      />
-      <div
-        aria-hidden="true"
-        className="drift-slow pointer-events-none absolute right-[8%] bottom-10 h-72 w-72 rounded-full bg-ivory/70 blur-3xl"
-      />
-
+    <section className="bg-white px-6 py-24 sm:px-10 lg:py-40">
       <div className="relative mx-auto grid max-w-[1400px] items-center gap-16 lg:grid-cols-2">
         <Reveal className="order-2 lg:order-1">
           <Label>The Signature</Label>
@@ -63,7 +54,7 @@ export function Signature() {
 
         <Reveal delay={120} className="order-1 lg:order-2">
           <div className="relative mx-auto max-w-md">
-            <div className="absolute inset-x-8 top-10 bottom-10 rounded-full bg-ivory/80 blur-2xl" />
+            <div className="absolute inset-x-8 top-10 bottom-10 rounded-full bg-stone-pale blur-3xl" />
             <img
               src={signatureBottle}
               alt="Signature fragrance bottle"

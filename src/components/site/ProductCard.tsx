@@ -18,7 +18,7 @@ export function ProductCard({
       <div
         className={cn(
           "relative overflow-hidden rounded-xl bg-stone-pale",
-          tall ? "aspect-[3/4]" : "aspect-square",
+          tall ? "aspect-[4/5] max-h-[460px] lg:max-h-[520px]" : "aspect-square max-h-[380px] sm:max-h-[420px]",
         )}
       >
         <img

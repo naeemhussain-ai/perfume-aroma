@@ -14,7 +14,7 @@ export function Story() {
               loading="lazy"
               width={1008}
               height={1200}
-              className="aspect-[4/5] w-full object-cover"
+              className="aspect-[4/5] w-full object-cover max-h-[480px] lg:max-h-none"
             />
           </div>
         </Reveal>

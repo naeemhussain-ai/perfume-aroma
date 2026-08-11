@@ -68,14 +68,14 @@ export function Discovery() {
             </p>
           </div>
 
-          <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:col-span-8 lg:grid-cols-3">
+          <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 md:grid-cols-3 lg:col-span-8 lg:grid-cols-3">
             {matches.map((p, i) => (
               <article
                 key={p.id}
                 className="group reveal reveal-in"
                 style={{ transitionDelay: `${i * 90}ms` }}
               >
-                <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-stone-pale">
+                <div className="relative aspect-[3/4] max-h-[360px] overflow-hidden rounded-xl bg-stone-pale lg:max-h-[420px]">
                   <img
                     src={p.image}
                     alt={p.name}

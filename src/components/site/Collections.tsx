@@ -60,7 +60,7 @@ export function Collections() {
           </p>
         </Reveal>
 
-        <div className="mt-16 grid gap-x-6 gap-y-14 lg:auto-rows-fr lg:grid-cols-12">
+        <div className="mt-16 grid gap-x-6 gap-y-8 sm:grid-cols-2 lg:auto-rows-fr lg:grid-cols-12 lg:gap-y-14">
           {items.map((item, i) => (
             <Reveal
               key={item.title}
@@ -69,7 +69,7 @@ export function Collections() {
             >
               <a href="#shop" className="flex h-full w-full flex-col">
                 <div
-                  className={`relative overflow-hidden rounded-xl bg-stone-pale ${item.ratio}`}
+                  className={`relative overflow-hidden rounded-xl bg-stone-pale ${item.ratio} max-h-[380px] sm:max-h-[420px] lg:max-h-[500px]`}
                 >
                   <img
                     src={item.image}

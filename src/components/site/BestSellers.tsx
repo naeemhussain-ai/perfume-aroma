@@ -3,7 +3,15 @@ import { ProductCard } from "@/components/site/ProductCard";
 import { products } from "@/lib/catalog";
 
 export function BestSellers() {
-  const [a, b, c, d, e, f] = products;
+  const [a, b, c, d, e, f] = products as [
+    (typeof products)[number],
+    (typeof products)[number],
+    (typeof products)[number],
+    (typeof products)[number],
+    (typeof products)[number],
+    (typeof products)[number],
+  ];
+
 
   return (
     <section id="shop" className="bg-stone-pale/60 px-6 py-24 sm:px-10 lg:py-36">
